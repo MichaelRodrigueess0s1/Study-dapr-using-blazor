@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  docbrown.app.server:
+    image: ${DOCKER_REGISTRY-}docbrown.app.server
+    build:
+      context: .
+      dockerfile: DocBrown.App/Server/Dockerfile
+    ports:
+      - "51000:50001"
+  docbrown.app.server-dapr:
+    image: "daprio/dapr:latest"
+    command: [ "./daprd", "-app-id", "docbrownserver", "-app-port", "80" ]
+    depends_on:
+      - docbrown.app.server
+    network_mode: "service:docbrown.app.server"
