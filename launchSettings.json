@@ -4,7 +4,8 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "docbrown.app.server": "StartDebugging"
+        "docbrown.app.server": "StartDebugging",
+        "docbrown.forecaster.api": "StartDebugging"
       }
     }
   }

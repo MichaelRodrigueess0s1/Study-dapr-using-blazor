@@ -14,3 +14,18 @@ services:
     depends_on:
       - docbrown.app.server
     network_mode: "service:docbrown.app.server"
+
+  docbrown.forecaster.api:
+    image: ${DOCKER_REGISTRY-}docbrown.forecaster.api
+    build:
+      context: .
+      dockerfile: DocBrown.Forecaster.API/Dockerfile
+    ports:
+     - "52000:50001"
+  docbrown.forecaster.api-dapr:
+    image: "daprio/dapr:latest"
+    command: [ "./daprd", "-app-id", "docbrownforecasterapi", "-app-port", "80" ]
+    depends_on:
+      - docbrown.forecaster.api
+    network_mode: "service:docbrown.forecaster.api"
+

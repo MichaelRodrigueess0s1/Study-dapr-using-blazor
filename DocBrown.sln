@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{CD41F1
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0B766B30-8F6A-4B73-AEA5-E83D5E81BACF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocBrown.Forecaster.API", "DocBrown.Forecaster.API\DocBrown.Forecaster.API.csproj", "{022CAB62-D870-4C42-82E5-BC9A2D7D7CF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{0B766B30-8F6A-4B73-AEA5-E83D5E81BACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B766B30-8F6A-4B73-AEA5-E83D5E81BACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B766B30-8F6A-4B73-AEA5-E83D5E81BACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{022CAB62-D870-4C42-82E5-BC9A2D7D7CF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{022CAB62-D870-4C42-82E5-BC9A2D7D7CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{022CAB62-D870-4C42-82E5-BC9A2D7D7CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{022CAB62-D870-4C42-82E5-BC9A2D7D7CF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 		{67DB3885-9F7C-4684-A8C7-EB5F476CBCA8} = {49A02467-084F-4053-A1BF-A7BCE980C565}
 		{AA8E4672-737D-44CE-A6EE-1DA2FEB0E8B2} = {49A02467-084F-4053-A1BF-A7BCE980C565}
 		{8AD11B6C-E6F7-407F-8587-C1BFCA83E4FF} = {BF84E42C-FFE5-4936-8C37-24A1C93E7598}
+		{022CAB62-D870-4C42-82E5-BC9A2D7D7CF0} = {CD41F165-8884-4CAC-AFB5-948D38A0CA09}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F3356BB4-45A6-49C2-AAAC-5B8A4C6C9431}
