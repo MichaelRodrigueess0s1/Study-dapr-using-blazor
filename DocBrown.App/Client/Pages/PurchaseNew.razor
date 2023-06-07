@@ -1,0 +1,60 @@
+﻿@page "/purchases/new"
+@using DocBrown.Domain.Abstractions;
+@using DocBrown.Domain.Entities;
+
+@inject HttpClient Http
+
+<PageTitle>Purchases</PageTitle>
+
+<div>
+	<p>
+		<label for="customerName">Customer Name:</label>
+		<InputText id="customerName" @bind-Value="Model.Customer.Name" />
+	</p>
+
+	<p>
+		<label for="date">Date:</label>
+		<InputDate id="date" @bind-Value="Model.Date" />
+	</p>
+
+	@foreach (var item in Model.Items)
+	{
+		<p>
+			<label for="productName">Product Name:</label>
+			<InputText id="productName" @bind-Value="item.Product.Name" />
+		</p>
+
+		<p>
+			<label for="quantity">Quantity:</label>
+			<InputNumber id="quantity" @bind-Value="item.Quantity" />
+		</p>
+
+		<p>
+			<label for="unitPrice">Unit Price:</label>
+			<InputNumber id="unitPrice" @bind-Value="item.UnitPrice" />
+		</p>
+	}
+	<button @onclick="@HandleSubmit">Submit</button>
+</div>
+
+
+@code {
+
+	long purchaseId;
+	private IPurchase Model { get; set; } = new Purchase();
+
+	private List<ICustomer> Customers = new List<ICustomer>();
+
+	string Response { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		Customers = new List<ICustomer>() { new Customer() { ID = 1, Name = "Michael" }, new Customer() { ID = 1, Name = "Vinicios" } };
+	}
+
+
+	private async Task HandleSubmit()
+	{
+		
+	}
+}

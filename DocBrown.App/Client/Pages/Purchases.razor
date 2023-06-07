@@ -26,6 +26,9 @@
 			<li>@item.ID - @item.Name</li>
 		}
 	</ul>
+} else
+{
+	<div>@Response</div>
 }
 
 
@@ -33,6 +36,7 @@
 
 	long purchaseId;
 	private IPurchase Purchase { get; set; }
+	string Response { get; set; }
 
 	async Task SearchPurchase()
 	{
@@ -42,7 +46,7 @@
 		}
 		catch (Exception ex)
 		{
-			Console.WriteLine($"Erro ao pesquisar a compra: {ex.Message}");
+			Response = ex.Message;
 		}
 	}
 }

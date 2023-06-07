@@ -1,6 +1,6 @@
 ﻿using DocBrown.Domain.Abstractions;
 
-namespace DocBrown.Domain
+namespace DocBrown.Domain.Entities
 {
 	public class PurchaseItem : BaseEntity, IPurchaseItem
 	{

@@ -3,7 +3,7 @@
 	public interface IBaseEntity
 	{
 		long ID { get; set; }
-		string Name { get; }
+		string Name { get; set; }
 		string Key { get; }
 	}
 }

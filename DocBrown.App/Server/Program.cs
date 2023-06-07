@@ -1,7 +1,6 @@
-using Dapr.Client;
-using Dapr.Extensions.Configuration;
 using DocBrown.Infra.Abstractions.Repositories;
 using DocBrown.Infra.Repositories;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,13 +9,15 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-
 builder.Services.AddDaprClient();
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+
 //builder.Configuration.AddDaprSecretStore("secretstore",
 //	   new DaprClientBuilder().Build());
 
 
 builder.Services.AddScoped<IForecasts, RedisForecasters>();
+builder.Services.AddScoped<IPurchases, RedisPurchases>();
 
 var app = builder.Build();
 

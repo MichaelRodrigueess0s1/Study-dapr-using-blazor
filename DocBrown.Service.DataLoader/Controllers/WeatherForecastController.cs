@@ -1,9 +1,9 @@
-using DocBrown.Domain;
+using DocBrown.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocBrown.Service.DataLoader.Controllers
 {
-	[ApiController]
+    [ApiController]
 	[Route("[controller]")]
 	public class WeatherForecastController : ControllerBase
 	{

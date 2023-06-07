@@ -11,7 +11,6 @@ services:
     ports:
       - "5411:9411"
 
-
   docbrown.app.server:
     image: ${DOCKER_REGISTRY-}docbrown.app.server
     build:
@@ -54,3 +53,19 @@ services:
     network_mode: "service:docbrown.service.dataloader"
     depends_on:
       - docbrown.service.dataloader
+
+  docbrown.basket.purchase:
+    image: ${DOCKER_REGISTRY-}docbrownbasketpurchase
+    build:
+      context: .
+      dockerfile: DocBrown.Basket.Purchase/Dockerfile
+    depends_on:
+     - redis
+
+  docbrown.basket.purchase-dapr:
+    image: "daprio/dapr:latest"
+    network_mode: "service:docbrown.basket.purchase"
+    depends_on:
+      - docbrown.basket.purchase
+
+

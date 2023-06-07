@@ -64,3 +64,23 @@ services:
     volumes:
      - "./dapr/components/:/components"
 
+  docbrown.basket.purchase:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
+  docbrown.basket.purchase-dapr:
+    command: [ 
+        "./daprd", 
+        "-app-id", "basket-service",
+        "-app-port", "80",
+        "-components-path", "/components",
+       ]
+    volumes:
+     - "./dapr/components/:/components"
+
+
+
+
+

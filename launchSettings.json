@@ -8,7 +8,8 @@
         "docbrown.forecaster.api": "StartDebugging",
         "redis": "StartWithoutDebugging",
         "zipkin": "StartWithoutDebugging",
-        "docbrown.service.dataloader": "StartDebugging"
+        "docbrown.service.dataloader": "StartDebugging",
+        "docbrown.basket.purchase": "StartDebugging"
       }
     }
   }
