@@ -3,26 +3,70 @@ version: '3.4'
 services:
 
   redis:
-    image: redis:alpine possivel
-    ports: 
-      - "6379:6379"
+    image: redis:alpine
+    ports:
+      - "5379:6379"
+
+  zipkin:
+    ports:
+      - "5411:9411"
 
   docbrown.app.server:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
+      - "51000:50001"
       - "80"
+
+  docbrown.app.server-dapr:
+    command: [ 
+        "./daprd",
+        "-app-id", "app-server",
+        "-app-port", "80",
+        "-components-path", "/components",
+        "-config", "/configuration/docbrown-config.yaml",
+        ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"
+
 
   docbrown.forecaster.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
+      - "52000:50001"
 
+
+  docbrown.forecaster.api-dapr:
+    command: [ 
+        "./daprd", 
+        "-app-id", "forecast-service",
+        "-app-port", "80",
+        "-components-path", "/components",
+        "-config", "/configuration/docbrown-config.yaml",
+       ]
+    volumes:
+     - "./dapr/components/:/components"
+     - "./dapr/configuration/:/configuration"
+    
 
   docbrown.service.dataloader:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
+      - "53000:50001"
 
+  docbrown.service.dataloader-dapr:
+    command: [ 
+        "./daprd", 
+        "-app-id", "dataloader-service",
+        "-app-port", "80",
+        "-components-path", "/components",
+        "-config", "/configuration/docbrown-config.yaml",
+       ]
+    volumes:
+     - "./dapr/components/:/components"
+     - "./dapr/configuration/:/configuration"

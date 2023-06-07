@@ -2,13 +2,14 @@ version: '3.4'
 
 services:
 
+  redis:
+    image: redis:alpine
+
+
   zipkin:
     image: openzipkin/zipkin-slim:latest
     ports:
       - "5411:9411"
-
-  redis:
-    image: redis:alpine
 
 
   docbrown.app.server:
@@ -16,52 +17,28 @@ services:
     build:
       context: .
       dockerfile: DocBrown.App/Server/Dockerfile
-    ports:
-      - "51000:50001"
     depends_on:
       - redis
 
   docbrown.app.server-dapr:
     image: "daprio/dapr:latest"
-    command: [ 
-        "./daprd", 
-        "-app-id", "docbrownserver", 
-        "-app-port", "80",
-        "-components-path", "/components",
-        "-config", "/configuration/docbrown-config.yaml",
-        ]
-    volumes:
-      - "./dapr/components/:/components"
-      - "./dapr/configuration/:/configuration"
+    network_mode: "service:docbrown.app.server"
     depends_on:
       - docbrown.app.server
-    network_mode: "service:docbrown.app.server"
 
   docbrown.forecaster.api:
     image: ${DOCKER_REGISTRY-}docbrown.forecaster.api
     build:
       context: .
       dockerfile: DocBrown.Forecaster.API/Dockerfile
-    ports:
-     - "52000:50001"
     depends_on:
       - redis
 
   docbrown.forecaster.api-dapr:
     image: "daprio/dapr:latest"
-    command: [ 
-        "./daprd", 
-        "-app-id", "docbrownforecasterapi", 
-        "-app-port", "80",
-        "-components-path", "/components",
-        "-config", "/configuration/docbrown-config.yaml",
-       ]
-    volumes:
-     - "./dapr/components/:/components"
-     - "./dapr/configuration/:/configuration"
+    network_mode: "service:docbrown.forecaster.api"
     depends_on:
       - docbrown.forecaster.api
-    network_mode: "service:docbrown.forecaster.api"
 
 
   docbrown.service.dataloader:
@@ -69,24 +46,12 @@ services:
     build:
       context: .
       dockerfile: DocBrown.Service.DataLoader/Dockerfile
-    ports:
-      - "53000:50001"
     depends_on:
       - redis
 
   docbrown.service.dataloader-dapr:
     image: "daprio/dapr:latest"
-    command: [ 
-        "./daprd", 
-        "-app-id", "dataloader",
-        "-app-port", "80",
-        "-components-path", "/components",
-        "-config", "/configuration/docbrown-config.yaml",
-       ]
-    volumes:
-     - "./dapr/components/:/components"
-     - "./dapr/configuration/:/configuration"
+    network_mode: "service:docbrown.service.dataloader"
     depends_on:
       - docbrown.service.dataloader
-    network_mode: "service:docbrown.service.dataloader"
 
