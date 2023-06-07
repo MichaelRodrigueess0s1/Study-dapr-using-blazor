@@ -5,7 +5,10 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "docbrown.app.server": "StartDebugging",
-        "docbrown.forecaster.api": "StartDebugging"
+        "docbrown.forecaster.api": "StartDebugging",
+        "redis": "StartWithoutDebugging",
+        "zipkin": "StartWithoutDebugging",
+        "docbrown.service.dataloader": "StartDebugging"
       }
     }
   }

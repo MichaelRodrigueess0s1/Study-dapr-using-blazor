@@ -1,7 +1,7 @@
-apiVersion: daprio/dapr:latest
+apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
-  name: stateStore
+  name: docbrown-statestore
   namespace: docbrown
 spec:
   type: state.redis
@@ -9,8 +9,10 @@ spec:
   metadata:
   - name: redisHost
     value: redis:6379
+  - name: redisPassword
   - name: actorStateStore
     value: "true"
 scopes:
-- docbrown.app.server
-- docbrown.forecaster.api
+ - docbrown.app.server
+ - docbrown.forecaster.api
+ - docbrown.service.dataloade 

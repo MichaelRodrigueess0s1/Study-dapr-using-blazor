@@ -1,7 +1,7 @@
-apiVersion: daprio/dapr:latest
+apiVersion: dapr.io/v1alpha1
 kind: Configuration
 metadata:
-  name: docbrownconfig
+  name: config
   namespace: docbrown
 spec:
   tracing:

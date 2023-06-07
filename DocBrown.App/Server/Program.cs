@@ -1,15 +1,17 @@
-using Microsoft.AspNetCore.ResponseCompression;
+using DocBrown.Infra.Abstractions.Repositories;
+using DocBrown.Infra.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
 
-
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 builder.Services.AddDaprClient();
+
+builder.Services.AddScoped<IForecastRepository, DaprForecastRepository>();
 
 var app = builder.Build();
 
