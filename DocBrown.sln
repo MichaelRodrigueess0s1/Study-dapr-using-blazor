@@ -44,6 +44,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", 
 		dapr\components\secretstore.yaml = dapr\components\secretstore.yaml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocBrown.Basket.Purchase", "DocBrown.Basket.Purchase\DocBrown.Basket.Purchase.csproj", "{4B03C0C6-1A65-4750-94D6-726673F4AA44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,10 @@ Global
 		{BD7692F9-85E2-49C1-A532-59E1FDD55652}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD7692F9-85E2-49C1-A532-59E1FDD55652}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD7692F9-85E2-49C1-A532-59E1FDD55652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B03C0C6-1A65-4750-94D6-726673F4AA44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B03C0C6-1A65-4750-94D6-726673F4AA44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B03C0C6-1A65-4750-94D6-726673F4AA44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B03C0C6-1A65-4750-94D6-726673F4AA44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +106,7 @@ Global
 		{BD7692F9-85E2-49C1-A532-59E1FDD55652} = {C4C6BA76-BD6A-4F70-AF80-5ECDFB05DAF1}
 		{B4CC4406-7DEB-46FE-B766-89A90FED3E24} = {15421C27-5CFA-40DF-8EF8-01D90AB2C027}
 		{F6A6CE76-DC15-45C6-91F1-2D1B2AECC64F} = {15421C27-5CFA-40DF-8EF8-01D90AB2C027}
+		{4B03C0C6-1A65-4750-94D6-726673F4AA44} = {C4C6BA76-BD6A-4F70-AF80-5ECDFB05DAF1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F3356BB4-45A6-49C2-AAAC-5B8A4C6C9431}
