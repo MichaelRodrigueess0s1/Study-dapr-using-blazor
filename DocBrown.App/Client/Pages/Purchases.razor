@@ -1,0 +1,48 @@
+﻿@page "/purchases"
+@using DocBrown.Domain.Abstractions;
+
+@inject HttpClient Http
+
+<PageTitle>Purchases</PageTitle>
+
+<h1>Purchases</h1>
+
+<div>
+	<label for="purchaseId">Cod:</label>
+	<input type="number" id="purchaseId" @bind="@purchaseId" />
+	<button @onclick="SearchPurchase">Pesquisar</button>
+</div>
+
+@if (Purchase != null)
+{
+	<h4>Detalhes da Purchase</h4>
+	<p><strong>ID:</strong> @Purchase.ID</p>
+	<p><strong>Data:</strong> @Purchase.Date.ToShortDateString()</p>
+	<p><strong>Cliente:</strong> @Purchase.Customer.ID - @Purchase.Customer.Name</p>
+	<h5>Itens:</h5>
+	<ul>
+		@foreach (var item in Purchase.Items)
+		{
+			<li>@item.ID - @item.Name</li>
+		}
+	</ul>
+}
+
+
+@code {
+
+	long purchaseId;
+	private IPurchase Purchase { get; set; }
+
+	async Task SearchPurchase()
+	{
+		try
+		{
+			Purchase = await Http.GetFromJsonAsync<IPurchase>($"purchases/{purchaseId}");
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine($"Erro ao pesquisar a compra: {ex.Message}");
+		}
+	}
+}

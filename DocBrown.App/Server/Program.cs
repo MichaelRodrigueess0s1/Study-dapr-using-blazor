@@ -16,7 +16,7 @@ builder.Services.AddDaprClient();
 //	   new DaprClientBuilder().Build());
 
 
-builder.Services.AddScoped<IForecastRepository, DaprForecastRepository>();
+builder.Services.AddScoped<IForecasts, RedisForecasters>();
 
 var app = builder.Build();
 

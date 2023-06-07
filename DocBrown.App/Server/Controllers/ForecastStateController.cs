@@ -6,18 +6,28 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DocBrown.App.Server.Controllers
 {
+
+	[ApiController]
+	[Route("[controller]")]
+	public class PurchasesController : ControllerBase
+	{
+		ILogger<PurchasesController> Logger { get; }
+
+	}
+
+
 	[ApiController]
 	[Route("[controller]")]
 	public class ForecastStateController : ControllerBase
 	{
 		ILogger<ForecastStateController> Logger { get; }
 		DaprClient DaprClient { get; }
-		IForecastRepository Repository { get; }
+		IForecasts Repository { get; }
 
 		public ForecastStateController(
-			ILogger<ForecastStateController> logger, 
+			ILogger<ForecastStateController> logger,
 			DaprClient daprClient,
-			IForecastRepository repository
+			IForecasts repository
 			)
 		{
 			Logger = logger;
