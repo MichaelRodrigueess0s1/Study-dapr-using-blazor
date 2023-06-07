@@ -10,7 +10,18 @@ services:
       - "51000:50001"
   docbrown.app.server-dapr:
     image: "daprio/dapr:latest"
-    command: [ "./daprd", "-app-id", "docbrownserver", "-app-port", "80" ]
+    command: [ 
+        "./daprd", 
+        "-app-id", 
+        "docbrownserver", 
+        "-app-port", 
+        "80",
+        "-components-path", "/components",
+        "-config", "/configuration/docbrown-config.yaml"
+        ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"
     depends_on:
       - docbrown.app.server
     network_mode: "service:docbrown.app.server"
@@ -24,7 +35,18 @@ services:
      - "52000:50001"
   docbrown.forecaster.api-dapr:
     image: "daprio/dapr:latest"
-    command: [ "./daprd", "-app-id", "docbrownforecasterapi", "-app-port", "80" ]
+    command: [ 
+        "./daprd", 
+        "-app-id", 
+        "docbrownforecasterapi", 
+        "-app-port", 
+        "80",
+        "-components-path", "/components",
+        "-config", "/configuration/docbrown-config.yaml"
+       ]
+    volumes:
+      - "./dapr/components/:/components"
+      - "./dapr/configuration/:/configuration"
     depends_on:
       - docbrown.forecaster.api
     network_mode: "service:docbrown.forecaster.api"

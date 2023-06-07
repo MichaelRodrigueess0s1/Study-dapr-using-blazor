@@ -1,6 +1,8 @@
 
+using Dapr.Client;
 using DocBrown.Domain;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace DocBrown.App.Server.Controllers
 {
@@ -14,22 +16,30 @@ namespace DocBrown.App.Server.Controllers
 	};
 
 		private readonly ILogger<WeatherForecastController> _logger;
+		private readonly DaprClient daprClient;
 
-		public WeatherForecastController(ILogger<WeatherForecastController> logger)
+		public WeatherForecastController(ILogger<WeatherForecastController> logger, DaprClient daprClient)
 		{
 			_logger = logger;
+			this.daprClient = daprClient;
 		}
 
 		[HttpGet]
-		public IEnumerable<WeatherForecast> Get()
+		public async Task<IEnumerable<WeatherForecast>> Get()
 		{
-			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+			try
 			{
-				Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-				TemperatureC = Random.Shared.Next(-20, 55),
-				Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-			})
-			.ToArray();
+				var forecasts = await daprClient.InvokeMethodAsync<IEnumerable<WeatherForecast>>(
+						HttpMethod.Get,
+						"docbrownforecasterapi",
+						"weatherforecast");
+
+				return forecasts;
+			}
+			catch (Exception)
+			{
+				return Enumerable.Empty<WeatherForecast>();
+			}
 		}
 	}
 }

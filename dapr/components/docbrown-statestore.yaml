@@ -1,0 +1,16 @@
+apiVersion: daprio/dapr:latest
+kind: Component
+metadata:
+  name: docbrownconfig-statestore
+  namespace: docbrown
+spec:
+  type: state.redis
+  version: v1
+  metadata:
+  - name: redisHost
+    value: redis:6379
+  - name: actorStateStore
+    value: "true"
+scopes:
+- basket-api
+- ordering-api

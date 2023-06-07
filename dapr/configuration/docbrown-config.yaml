@@ -1,0 +1,10 @@
+apiVersion: daprio/dapr:latest
+kind: Configuration
+metadata:
+  name: docbrownconfig
+  namespace: docbrown
+spec:
+  tracing:
+    samplingRate: "1"
+    zipkin:
+      endpointAddress: "http://zipkin:9411/api/v2/spans"
