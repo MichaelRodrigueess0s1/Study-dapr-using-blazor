@@ -29,9 +29,12 @@ namespace DocBrown.App.Server.Controllers
 			var forecasts = Enumerable.Empty<IForecast>();
 			try
 			{
-				forecasts = await daprClient.GetStateAsync<IEnumerable<IForecast>>("statestore", "forecasters");
+				daprClient.p
 
-				
+				var result = await daprClient.InvokeMethodAsync<IEnumerable<Dictionary<string, object>>>(
+				   HttpMethod.Get,
+				   "forecast-service",
+					"weatherforecast");
 
 
 			}
