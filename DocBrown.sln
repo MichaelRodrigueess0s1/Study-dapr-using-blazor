@@ -21,18 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocBrown.Forecaster.API", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{133EE80B-8717-4065-8EB5-EF52E2CA4E60}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dapr", "dapr", "{F5AF89A9-BD8F-48DF-9AA8-F67A58E0360C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{5DF66B63-B7AE-4596-AA9B-6763FA83859F}"
-	ProjectSection(SolutionItems) = preProject
-		docbrown-statestore.yaml = docbrown-statestore.yaml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configuration", "configuration", "{851B40FF-361D-4D67-9E50-EF255BEDC9AC}"
-	ProjectSection(SolutionItems) = preProject
-		dapr\configuration\docbrown-config.yaml = dapr\configuration\docbrown-config.yaml
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocBrown.Infra", "DocBrown.Infra\DocBrown.Infra.csproj", "{25A9D769-0D67-4BB6-856E-6330ABE987D9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{65FD83A5-82B9-4B44-BEBB-581F5E7DFCD6}"
@@ -40,6 +28,21 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C4C6BA76-BD6A-4F70-AF80-5ECDFB05DAF1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocBrown.Service.DataLoader", "DocBrown.Service.DataLoader\DocBrown.Service.DataLoader.csproj", "{BD7692F9-85E2-49C1-A532-59E1FDD55652}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dapr", "dapr", "{15421C27-5CFA-40DF-8EF8-01D90AB2C027}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "configurations", "configurations", "{B4CC4406-7DEB-46FE-B766-89A90FED3E24}"
+	ProjectSection(SolutionItems) = preProject
+		dapr\configuration\docbrown-config.yaml = dapr\configuration\docbrown-config.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{F6A6CE76-DC15-45C6-91F1-2D1B2AECC64F}"
+	ProjectSection(SolutionItems) = preProject
+		dapr\components\pubsub.yaml = dapr\components\pubsub.yaml
+		dapr\components\redis-state.yaml = dapr\components\redis-state.yaml
+		dapr\components\secrets.json = dapr\components\secrets.json
+		dapr\components\secretstore.yaml = dapr\components\secretstore.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,12 +94,12 @@ Global
 		{8AD11B6C-E6F7-407F-8587-C1BFCA83E4FF} = {BF84E42C-FFE5-4936-8C37-24A1C93E7598}
 		{49A02467-084F-4053-A1BF-A7BCE980C565} = {133EE80B-8717-4065-8EB5-EF52E2CA4E60}
 		{022CAB62-D870-4C42-82E5-BC9A2D7D7CF0} = {C4C6BA76-BD6A-4F70-AF80-5ECDFB05DAF1}
-		{5DF66B63-B7AE-4596-AA9B-6763FA83859F} = {F5AF89A9-BD8F-48DF-9AA8-F67A58E0360C}
-		{851B40FF-361D-4D67-9E50-EF255BEDC9AC} = {F5AF89A9-BD8F-48DF-9AA8-F67A58E0360C}
 		{25A9D769-0D67-4BB6-856E-6330ABE987D9} = {65FD83A5-82B9-4B44-BEBB-581F5E7DFCD6}
 		{65FD83A5-82B9-4B44-BEBB-581F5E7DFCD6} = {133EE80B-8717-4065-8EB5-EF52E2CA4E60}
 		{C4C6BA76-BD6A-4F70-AF80-5ECDFB05DAF1} = {133EE80B-8717-4065-8EB5-EF52E2CA4E60}
 		{BD7692F9-85E2-49C1-A532-59E1FDD55652} = {C4C6BA76-BD6A-4F70-AF80-5ECDFB05DAF1}
+		{B4CC4406-7DEB-46FE-B766-89A90FED3E24} = {15421C27-5CFA-40DF-8EF8-01D90AB2C027}
+		{F6A6CE76-DC15-45C6-91F1-2D1B2AECC64F} = {15421C27-5CFA-40DF-8EF8-01D90AB2C027}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F3356BB4-45A6-49C2-AAAC-5B8A4C6C9431}

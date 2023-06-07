@@ -1,3 +1,5 @@
+using Dapr.Client;
+using Dapr.Extensions.Configuration;
 using DocBrown.Infra.Abstractions.Repositories;
 using DocBrown.Infra.Repositories;
 
@@ -10,6 +12,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 builder.Services.AddDaprClient();
+//builder.Configuration.AddDaprSecretStore("secretstore",
+//	   new DaprClientBuilder().Build());
+
 
 builder.Services.AddScoped<IForecastRepository, DaprForecastRepository>();
 

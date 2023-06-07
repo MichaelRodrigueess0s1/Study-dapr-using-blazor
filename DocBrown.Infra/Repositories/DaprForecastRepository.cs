@@ -9,14 +9,13 @@ namespace DocBrown.Infra.Repositories
 	{
 		DaprClient Client { get; }
 		ILogger<DaprForecastRepository> Logger;
-		private const string StateStore = "docbrown-statestore";
+		private const string StateStore = "statestore";
 
 		public DaprForecastRepository(DaprClient client, ILogger<DaprForecastRepository> logger)
 		{
 			Client = client;
 			Logger = logger;
 		}
-
 
 		public Task<IEnumerable<WeatherForecast>> All()
 		{

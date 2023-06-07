@@ -3,7 +3,6 @@ version: '3.4'
 services:
 
   redis:
-    image: redis:alpine
     ports:
       - "5379:6379"
 
@@ -24,11 +23,9 @@ services:
         "-app-id", "app-server",
         "-app-port", "80",
         "-components-path", "/components",
-        "-config", "/configuration/docbrown-config.yaml",
         ]
     volumes:
       - "./dapr/components/:/components"
-      - "./dapr/configuration/:/configuration"
 
 
   docbrown.forecaster.api:
@@ -44,12 +41,10 @@ services:
         "./daprd", 
         "-app-id", "forecast-service",
         "-app-port", "80",
-        "-components-path", "/components",
-        "-config", "/configuration/docbrown-config.yaml",
+        "-components-path", "/componentes",
        ]
     volumes:
-     - "./dapr/components/:/components"
-     - "./dapr/configuration/:/configuration"
+      - "./dapr/components/:/components"
     
 
   docbrown.service.dataloader:
@@ -65,8 +60,7 @@ services:
         "-app-id", "dataloader-service",
         "-app-port", "80",
         "-components-path", "/components",
-        "-config", "/configuration/docbrown-config.yaml",
        ]
     volumes:
      - "./dapr/components/:/components"
-     - "./dapr/configuration/:/configuration"
+

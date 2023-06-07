@@ -2,6 +2,7 @@
 using Dapr.Client;
 using DocBrown.Domain;
 using Microsoft.AspNetCore.Mvc;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace DocBrown.App.Server.Controllers
@@ -31,12 +32,12 @@ namespace DocBrown.App.Server.Controllers
 			{
 				var forecasts = await daprClient.InvokeMethodAsync<IEnumerable<WeatherForecast>>(
 						HttpMethod.Get,
-						"docbrownforecasterapi",
+						"forecast-service",
 						"weatherforecast");
 
 				return forecasts;
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
 				return Enumerable.Empty<WeatherForecast>();
 			}

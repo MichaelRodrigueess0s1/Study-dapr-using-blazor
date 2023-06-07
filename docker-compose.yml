@@ -54,4 +54,3 @@ services:
     network_mode: "service:docbrown.service.dataloader"
     depends_on:
       - docbrown.service.dataloader
-
